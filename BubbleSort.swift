@@ -25,16 +25,14 @@ func bubbleSort(_ array: [Int]) -> [Int] {
         // Flag for early completions
         var solved = true
         // Iterate over unsorted portion
-        for index in 0 ..< maxBound {
-            // Check if the current element is greater than the next element
-            if arr[index] > arr[index + 1] {
-                // If so, perform a swap
-                let temp = arr[index]
-                arr[index] = arr[index + 1]
-                arr[index + 1] = temp
-                // Set flag to false
-                solved = false
-            }
+        // Check if the current element is greater than the next element
+        for index in 0 ..< maxBound where arr[index] > arr[index + 1] {
+            // If so, perform a swap
+            let temp = arr[index]
+            arr[index] = arr[index + 1]
+            arr[index + 1] = temp
+            // Set flag to false
+            solved = false
         }
         // If no swaps were made, the array is sorted
         if solved {
@@ -109,7 +107,3 @@ for line in listOfLines {
     // Write a newline
     writeToOutputFile("\n")
 }
-
-
-
-
