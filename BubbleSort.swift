@@ -16,10 +16,12 @@ let outputFilePath = "./output.txt"
 
 // Bubble Sort Function
 // Sorts an array of integers using the bubble sort algorithm.
-func bubbleSort(_ array: [Int]) {
+func bubbleSort(_ array: [Int]) -> [Int] {
     var arr = array
     // Iterate over maxBound
-    for maxBound in ((arr.count - 1) ... 0).reversed() {
+    // Had to use stride() 
+    // because ((arr.count - 1) ... 0).reversed() didn't work
+    for maxBound in stride(from: arr.count - 1, through: 0, by: -1) {
         // Flag for early completions
         var solved = true
         // Iterate over unsorted portion
@@ -39,6 +41,8 @@ func bubbleSort(_ array: [Int]) {
             break
         }
     }
+    // Return the sorted array
+    return arr
 }
 
 // Access the input file
@@ -92,14 +96,14 @@ for line in listOfLines {
         }
     }
     // Print Array before Sorting
-    print("Before: \(intArr)"
+    print("Before: \(intArr)")
     // Sort the array
-    bubbleSort(intArr)
+    let sortedArr = bubbleSort(intArr)
     // Print Array after Sorting
-    print("After: \(intArr)")
+    print("After: \(sortedArr)")
 
     // Write the sorted array to the output file
-    for num in intArr {
+    for num in sortedArr {
         writeToOutputFile("\(num) ")
     }
     // Write a newline
